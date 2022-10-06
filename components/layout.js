@@ -16,7 +16,7 @@ export default function Layout({ children }) {
                 <header className="flex justify-between mb-6">
                     <div className="flex items-center">
                         <h3 className="text-xl font-extrabold"><Link href="/"><a>All Fit</a></Link></h3>
-                        {currentAccount && <p className="ml-8 text-gray-600"><Link href="/mynfts"><a>Dashboard</a></Link></p>}
+                        {currentAccount && <p className="ml-8 text-gray-600"><Link href="/dashboard"><a>Dashboard</a></Link></p>}
                     </div>
                     {currentAccount ? (
                         <h4>{shortenAddress(currentAccount)}</h4>
