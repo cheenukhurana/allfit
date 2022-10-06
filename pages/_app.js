@@ -6,7 +6,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <AuthProvider>
       <Head>
-        <title>Interview NFTs</title>
+        <title>All Fit</title>
         <meta name="viewport" content="initial-scale=1, width=device-width" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
