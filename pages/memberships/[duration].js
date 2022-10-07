@@ -6,6 +6,8 @@ export default function MembershipType({ membershipTypeData }) {
     return (
         <Layout>
             {membershipTypeData.duration} months
+            <img className="w-[14rem] border border-gray-400" src={`/membershipNFTs/${membershipTypeData.duration}months.png`} alt=""></img>
+            <p className="mt-4">You will be minted this nft upon buying</p>
         </Layout>
     )
 }
