@@ -40,7 +40,7 @@ export default function Layout({ children }) {
                         <button className="px-4 py-2 text-lg border border-orange-600 text-orange-600" onClick={setCurrentAccount}>Connect Wallet</button>
                     )}
 
-                    <button className="px-4 py-2 text-lg border border-orange-600 text-orange-600" onClick={walletConnectLink}>Connect Wallet</button>
+                    <button className="px-4 py-2 text-lg border border-orange-600 text-orange-600" onClick={walletConnectLink}>WalletConnect Demo</button>
                 </header>
                 <main>
                     {children}
