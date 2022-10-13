@@ -1,0 +1,1 @@
+export const BAOBAB_RPC_LINK = "https://public-node-api.klaytnapi.com/v1/baobab";
