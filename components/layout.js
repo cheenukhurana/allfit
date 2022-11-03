@@ -1,14 +1,30 @@
 import Link from 'next/link'
 import { useAuth } from '../utils/authProvider.js';
+import { GetWalletConnectProvider } from '../utils/walletConnectProvider.js';
 
 const shortenAddress = (address) => {
     if (address)
         return address.substring(0, 6) + "..." + address.substring(address.length - 4, address.length)
 }
 
+const wcProvider = GetWalletConnectProvider();
+
 export default function Layout({ children }) {
 
     const { currentAccount, setCurrentAccount } = useAuth()
+
+    async function walletConnectLink() {
+        console.log("Do the Wallet Connect thing here!");
+        //  Enable session (triggers QR Code modal)
+        await wcProvider.enable().then(function (resp) {
+            console.log("========= success!", resp);
+        });
+
+        // Subscribe to session disconnection
+        wcProvider.on("disconnect", (code, reason) => {
+            console.log(code, reason);
+        });
+    }
 
     return (
         <div className="h-screen p-6">
@@ -23,6 +39,8 @@ export default function Layout({ children }) {
                     ) : (
                         <button className="px-4 py-2 text-lg border border-orange-600 text-orange-600" onClick={setCurrentAccount}>Connect Wallet</button>
                     )}
+
+                    <button className="px-4 py-2 text-lg border border-orange-600 text-orange-600" onClick={walletConnectLink}>WalletConnect Demo</button>
                 </header>
                 <main>
                     {children}
