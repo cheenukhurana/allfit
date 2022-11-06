@@ -1,11 +1,9 @@
 import WalletConnectProvider from "@walletconnect/web3-provider";
-import { BAOBAB_RPC_LINK } from "./constants";
 
-export function GetWalletConnectProvider() {
-    const provider = new WalletConnectProvider({
-        rpc: {
-            1: BAOBAB_RPC_LINK,
-        },
-    });
-    return provider;
-}
+const POLYGON_MUMBAI_RPC_LINK = "https://matic-mumbai.chainstacklabs.com"
+
+export const wcProvider =  new WalletConnectProvider({
+    rpc: {
+        80001: POLYGON_MUMBAI_RPC_LINK
+    },
+});
