@@ -19,7 +19,7 @@ export default function AttendClass() {
     }
 
     async function disconnectWalletLink() {
-        wcProvider.close()
+        wcProvider.disconnect()
         wcProvider.on("disconnect", (code, reason) => {
             console.log(code, reason);
         });
