@@ -8,6 +8,8 @@ import { SUBSCRIPTION_ABI, STORE_ABI } from "../utils/contract_abis";
 
 const MembershipTypes = () => {
 
+    const { currentAccount, setCurrentAccount } = useAuth();
+
     const storeContract = new ethers.Contract(
         STORE_CONTRACT_ADDRESS,
         STORE_ABI,
@@ -21,8 +23,6 @@ const MembershipTypes = () => {
         signer
     );
     console.log("========= subscriptionContract is: ", subscriptionContract, subscriptionContract.address);
-
-    const { currentAccount, setCurrentAccount } = useAuth();
 
     async function CreateSubscription(creator_address, img_url, payment_val) {
         await subscriptionContract.makePaymentToStore(payment_val, {
@@ -45,32 +45,25 @@ const MembershipTypes = () => {
     }
 
     return (
-        <div className="flex">
-            {membershipTypesData.map((membership, index) => (
-                <div key={membership.duration} className="rounded-lg p-4 bg-gray-500 mx-5 cursor-pointer" onClick={handleMembershipBuy}>
-                    {/* <Link href={`/memberships/${membership.duration}`}>
-                        <div className="border-b border-b-gray-100 flex justify-between pb-2">
-                            <div className="flex flex-col">
-                                <p>{membership.duration}</p>
-                                <p>MONTHS</p>
+        <div>
+
+            <p className="text-center mt-12 text-xl"> Choose Your All Pass</p>
+            <div className="mt-8 flex justify-around">
+                {membershipTypesData.map((membership, index) => (
+                    <div key={membership.duration} className="rounded-lg bg-slate-400 hover:bg-slate-600 mx-6 cursor-pointer" onClick={handleMembershipBuy}>
+                        <Link href={`/memberships/${membership.duration}`}>
+                            <img className="block rounded-tl-lg rounded-tr-lg" src={`/membershipNFTs/${membership.duration}months.png`} alt="" />
+                            <div className="border-b border-b-gray-100 flex justify-between p-4">
+                                <p>{membership.duration} MONTHS</p>
+                                <div>{membership.price} Dai</div>
                             </div>
-                            <div>{membership.price} Dai</div>
-                        </div>
-                        <div className="mt-2">Get {membership.extras}</div>
-                        <button className="mt-2 px-2 py-1 bg-white text-orange-500 rounded mx-auto block">BUY NOW</button>
-                    </Link> */}
-                    <div className="border-b border-b-gray-100 flex justify-between pb-2">
-                        <div className="flex flex-col">
-                            <p>{membership.duration}</p>
-                            <p>MONTHS</p>
-                        </div>
-                        <div>{membership.price} Dai</div>
+                            <div className="mt-2 px-4">Get {membership.extras}</div>
+                            <button className="m-3 px-2 py-1 bg-white text-orange-500 hover:text-orange-700 rounded mx-auto block">BUY NOW</button>
+                        </Link>
                     </div>
-                    <div className="mt-2">Get {membership.extras}</div>
-                    <button className="mt-2 px-2 py-1 bg-white text-orange-500 rounded mx-auto block">BUY NOW</button>
-                </div >
-            ))}
-        </div >
+                ))}
+            </div>
+        </div>
     )
 }
 
