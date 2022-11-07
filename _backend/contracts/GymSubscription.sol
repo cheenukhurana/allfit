@@ -12,7 +12,7 @@ contract GymSubscription is ERC721URIStorage {
         uint256 tokenId;
         string ipfsHash;
         string imgUrl;
-        address owner; // == None -> Akshit
+        address owner;
         uint256 createdAt; // timestamp
         uint256 invalidAfter; // timestamp after which service is invalid
     }
@@ -27,8 +27,7 @@ contract GymSubscription is ERC721URIStorage {
         string memory ipfsHash,
         string memory imgUrl,
         address ownerAddress,
-        uint256 invalidAfter,
-        uint256 subValue
+        uint256 invalidAfter
     ) public {
         if (ownerAddress == address(0)) {
             ownerAddress = msg.sender;
@@ -48,11 +47,13 @@ contract GymSubscription is ERC721URIStorage {
         subscriptions.push(nextSub);
         _mint(msg.sender, serviceId);
         serviceId++;
+    }
 
+    function makePaymentToStore(uint256 val) public {
         address storeOwner = _gymStore.getStoreOwner(
             _gymStore.getStoreNumber()
         );
-        payable(storeOwner).transfer(subValue);
+        payable(storeOwner).transfer(val);
     }
 
     function hasStoreSubscription(address userAddr) public view returns (bool) {
@@ -62,6 +63,24 @@ contract GymSubscription is ERC721URIStorage {
             }
         }
         return false;
+    }
+
+    function GetStoreIdForSubscription() public view returns (uint256) {
+        return _gymStore.getStoreNumber();
+    }
+
+    function GetStoreAddressForSubscription(uint256 _storeId)
+        public
+        view
+        returns (
+            uint256,
+            string memory,
+            address,
+            uint256,
+            address[] memory
+        )
+    {
+        return _gymStore.getStore(_storeId);
     }
 
     function transferSubscription(uint256 sId, address transferAddr)
