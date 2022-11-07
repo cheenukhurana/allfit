@@ -2,8 +2,8 @@ export const POLYGON_MUMBAI_RPC_LINK = "https://matic-mumbai.chainstacklabs.com"
 export const CHAIN_ID = 80001
 export const COVALENT_BASE_URL = "https://api.covalenthq.com/v1/";
 export const COVALENT_API_KEY = "ckey_67ab6a60325149cc85edc08efbd";
-export const STORE_CONTRACT_ADDRESS = "0x9e85e2Ee2D83a14f55C258e9a4012D628fD63c4F"
-export const NFT_CONTRACT_ADDRESS = "0x83Ef4328E745e1aC0A45C229b699dc6676556B1F"
+export const STORE_CONTRACT_ADDRESS = "0xfDB312D8614EB0676b955a9cf6019403af373228"
+export const NFT_CONTRACT_ADDRESS = "0x629D77170a87baD851212D084d7aFaC2A5ADBF37"
 
 export const OneMonthsImg = "ipfs://bafybeigzbl6gipt4pyacg5zw72qfnwx7wb27t2rcusyyfjfy2aiqkttoue";
 export const ThreeMonthsImg = "ipfs://bafybeig3lqldt2ikpqrqtu26uodvvjokvp34w5k6vsl3wrz6ikjl5x3w3e";

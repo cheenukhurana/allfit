@@ -6,7 +6,7 @@ import "./GymStore.sol";
 
 contract GymSubscription is ERC721URIStorage {
     GymStore private _gymStore;
-    uint256 serviceId = 0;
+    uint256 serviceId = 1;
 
     struct storeSubscription {
         uint256 tokenId;
