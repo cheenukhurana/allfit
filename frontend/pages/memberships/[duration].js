@@ -29,7 +29,7 @@ export default function MembershipType({ membershipTypeData }) {
     return (
         <Layout>
             <p className="text-xl">{membershipTypeData.duration} Months All Pass</p>
-            <ul class="mt-2 list-disc list-inside">
+            <ul className="mt-2 list-disc list-inside">
                 <li>{membershipTypeData.extras}</li>
             </ul>
             <p className="text-xl mt-4 text-orange-500">{membershipTypeData.price} Dai</p>
