@@ -4,11 +4,10 @@ import { useState, useEffect } from 'react';
 
 const AuthContext = React.createContext();
 
-function AuthProvider(props)
-{
+function AuthProvider(props) {
 
     const [currentAccount, setCurrentAccount] = useState(null)
-    
+
     const checkWalletIsConnected = async () => {
         const { ethereum } = window
         if (ethereum) {
@@ -39,16 +38,15 @@ function AuthProvider(props)
     }
 
     return (
-        <AuthContext.Provider value={{currentAccount,setCurrentAccount:connectWalletHandler}}>
+        <AuthContext.Provider value={{ currentAccount, setCurrentAccount: connectWalletHandler }}>
             {props.children}
         </AuthContext.Provider>
     );
 }
 
-function useAuth()
-{
+function useAuth() {
     const authContext = useContext(AuthContext);
-    return {...authContext};
+    return { ...authContext };
 }
 
-export {AuthProvider, useAuth};
+export { AuthProvider, useAuth };
