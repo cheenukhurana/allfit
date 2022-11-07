@@ -41,17 +41,22 @@
  * https://trufflesuite.com/docs/truffle/getting-started/using-the-truffle-dashboard/
  */
 
-const HDWalletProvider = require("truffle-hdwallet-provider-klaytn");
+// const HDWalletProvider = require("truffle-hdwallet-provider-klaytn");
+const HDWalletProvider = require('@truffle/hdwallet-provider');
 
-const NETWORK_ID = '1001'
+const NETWORK_ID = '80001'
 const GASLIMIT = '8500000'
 
 /**
  * We extracted `URL`, `PRIVATE_KEY` as const variable to set value easily.
  * Set your private key and klaytn node's URL in here.
  */
-const URL = `https://api.baobab.klaytn.net:8651`
 const PRIVATE_KEY = '3d31f2f1c1de57e57c2830192cfab9032a88ce2ba4601dd307267bdf59be3edf'
+
+/**
+ * Polygon testnet config for testing deployments
+ */
+const POLYGON_URL = `https://rpc-mumbai.maticvigil.com`
 
 // require('dotenv').config();
 // const { MNEMONIC, PROJECT_ID } = process.env;
@@ -77,11 +82,13 @@ module.exports = {
     // options below to some value.
 
     // Baobab Network Configuration for deploying the Smart Contracts
-    baobab: {
-      provider: () => new HDWalletProvider(PRIVATE_KEY, URL),
+    polygon: {
+      provider: () => new HDWalletProvider(PRIVATE_KEY, POLYGON_URL),
       network_id: NETWORK_ID,
       gas: GASLIMIT,
-      gasPrice: null,
+      confirmations: 2,
+      timeoutBlocks: 200,
+      skipDryRun: true
     },
     // development: {
     //  host: "127.0.0.1",     // Localhost (default: none)

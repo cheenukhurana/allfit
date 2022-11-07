@@ -101,6 +101,14 @@ contract GymStore is ERC721URIStorage {
         delete storeOwner[_storeId];
     }
 
+    function getStoreOwner(uint256 storeId) public view returns (address) {
+        return (storeOwner[storeId]);
+    }
+
+    function getStoreNumber() public view returns (uint256) {
+        return storeNumber;
+    }
+
     function getStoreId(address _address) public view returns (uint256) {
         return storeNumberMapping[_address];
     }

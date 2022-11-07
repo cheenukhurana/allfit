@@ -11,7 +11,8 @@ contract GymSubscription is ERC721URIStorage {
     struct storeSubscription {
         uint256 tokenId;
         string ipfsHash;
-        address owner;
+        string imgUrl;
+        address owner; // == None -> Akshit
         uint256 createdAt; // timestamp
         uint256 invalidAfter; // timestamp after which service is invalid
     }
@@ -24,8 +25,10 @@ contract GymSubscription is ERC721URIStorage {
 
     function createSubscription(
         string memory ipfsHash,
+        string memory imgUrl,
         address ownerAddress,
-        uint256 invalidAfter
+        uint256 invalidAfter,
+        uint256 subValue
     ) public {
         if (ownerAddress == address(0)) {
             ownerAddress = msg.sender;
@@ -35,13 +38,21 @@ contract GymSubscription is ERC721URIStorage {
         storeSubscription memory nextSub = storeSubscription(
             sid,
             ipfsHash,
+            imgUrl,
             ownerAddress,
             block.timestamp,
             invalidAfter
         );
+
+        // _transfer(msg.sender, _gymStore, tokenId);
         subscriptions.push(nextSub);
         _mint(msg.sender, serviceId);
         serviceId++;
+
+        address storeOwner = _gymStore.getStoreOwner(
+            _gymStore.getStoreNumber()
+        );
+        payable(storeOwner).transfer(subValue);
     }
 
     function hasStoreSubscription(address userAddr) public view returns (bool) {
