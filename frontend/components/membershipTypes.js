@@ -10,38 +10,38 @@ const MembershipTypes = () => {
 
     const { currentAccount, setCurrentAccount } = useAuth();
 
-    const pr = new ethers.providers.Web3Provider(ethereum);
-    const pr = ethers.getDefaultProvider();
-    const signer = pr.getSigner()
-    const storeContract = new ethers.Contract(
-        STORE_CONTRACT_ADDRESS,
-        STORE_ABI,
-        signer
-    );
-    console.log("========= storeContract is: ", storeContract, storeContract.address);
+    // const pr = new ethers.providers.Web3Provider(ethereum);
+    // const pr = ethers.getDefaultProvider();
+    // const signer = pr.getSigner()
+    // const storeContract = new ethers.Contract(
+    //     STORE_CONTRACT_ADDRESS,
+    //     STORE_ABI,
+    //     signer
+    // );
+    // console.log("========= storeContract is: ", storeContract, storeContract.address);
 
-    const subscriptionContract = new ethers.Contract(
-        NFT_CONTRACT_ADDRESS,
-        SUBSCRIPTION_ABI,
-        signer
-    );
-    console.log("========= subscriptionContract is: ", subscriptionContract, subscriptionContract.address);
+    // const subscriptionContract = new ethers.Contract(
+    //     NFT_CONTRACT_ADDRESS,
+    //     SUBSCRIPTION_ABI,
+    //     signer
+    // );
+    // console.log("========= subscriptionContract is: ", subscriptionContract, subscriptionContract.address);
 
-    async function CreateSubscription(creator_address, img_url, payment_val) {
-        await subscriptionContract.makePaymentToStore(payment_val, {
-            gasLimit: '100000'
-        }).then(function (resp) {
-            console.log("========= payment resp: ", resp);
-            subscriptionContract.createSubscription(img_url,
-                img_url,
-                creator_address,
-                1670426482, {
-                gasLimit: '100000'
-            }).then(function (resp) {
-                console.log("========= created subscription: ", resp);
-            });
-        });
-    }
+    // async function CreateSubscription(creator_address, img_url, payment_val) {
+    //     await subscriptionContract.makePaymentToStore(payment_val, {
+    //         gasLimit: '100000'
+    //     }).then(function (resp) {
+    //         console.log("========= payment resp: ", resp);
+    //         subscriptionContract.createSubscription(img_url,
+    //             img_url,
+    //             creator_address,
+    //             1670426482, {
+    //             gasLimit: '100000'
+    //         }).then(function (resp) {
+    //             console.log("========= created subscription: ", resp);
+    //         });
+    //     });
+    // }
 
     const handleMembershipBuy = async () => {
         console.log("Want to buy");
