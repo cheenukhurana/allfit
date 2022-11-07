@@ -23,8 +23,8 @@ export async function CreateSubscription(creator_address, img_url, payment_val) 
 
     const { ethereum } = window
     const pr = new ethers.providers.Web3Provider(ethereum);
-            // const pr = ethers.getDefaultProvider();
-            const signer =  pr.getSigner()
+    // const pr = ethers.getDefaultProvider();
+    const signer = pr.getSigner()
 
     const subscriptionContract = new ethers.Contract(
         NFT_CONTRACT_ADDRESS,
