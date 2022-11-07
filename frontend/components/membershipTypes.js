@@ -29,7 +29,7 @@ const MembershipTypes = () => {
             gasLimit: '100000'
         }).then(function (resp) {
             console.log("========= payment resp: ", resp);
-            subscriptionContract.createSubscription('ipfs://subscription_tes01',
+            subscriptionContract.createSubscription(img_url,
                 img_url,
                 creator_address,
                 1670426482, {
