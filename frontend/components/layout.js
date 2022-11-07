@@ -31,13 +31,13 @@ export default function Layout({ children }) {
             <div>
                 <header className="flex justify-between mb-6">
                     <div className="flex items-center">
-                        <h3 className="text-xl font-extrabold"><Link href="/">All Fit</Link></h3>
+                        <h3 className="text-2xl font-extrabold"><Link href="/"><i className="fas fa-dumbbell mr-4"></i>All Fit</Link></h3>
                         {currentAccount && <p className="ml-8 text-gray-600"><Link href="/dashboard">Dashboard</Link></p>}
                     </div>
                     {currentAccount ? (
                         <h4>{shortenAddress(currentAccount)}</h4>
                     ) : (
-                        <button className="px-4 py-2 text-lg border border-orange-600 text-orange-600" onClick={setCurrentAccount}>Connect Wallet</button>
+                        <button className="px-4 py-2 border-2 border-black hover:border-gray-400 rounded" onClick={setCurrentAccount}>Connect Wallet</button>
                     )}
 
                     {/* <button className="px-4 py-2 text-lg border border-orange-600 text-orange-600" onClick={walletConnectLink}>WalletConnect Demo</button> */}
@@ -48,7 +48,7 @@ export default function Layout({ children }) {
             </div>
 
             <footer>
-                <div className="mt-8 mb-6 border border-grey-600"></div>
+                <div className="mt-12 mb-6 border border-grey-600"></div>
                 <div className="flex justify-between">
                     <p>Life is in this moment. There is no other meaning of life.</p>
                 </div>
