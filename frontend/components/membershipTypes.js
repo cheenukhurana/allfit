@@ -10,6 +10,9 @@ const MembershipTypes = () => {
 
     const { currentAccount, setCurrentAccount } = useAuth();
 
+    const pr = new ethers.providers.Web3Provider(ethereum);
+    const pr = ethers.getDefaultProvider();
+    const signer = pr.getSigner()
     const storeContract = new ethers.Contract(
         STORE_CONTRACT_ADDRESS,
         STORE_ABI,
