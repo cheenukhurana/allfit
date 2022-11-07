@@ -28,10 +28,14 @@ export default function MembershipType({ membershipTypeData }) {
 
     return (
         <Layout>
-            {membershipTypeData.duration} months
-            <img className="w-[14rem] border border-gray-400" src={`/membershipNFTs/${membershipTypeData.duration}months.png`} alt=""></img>
+            <p className="text-xl">{membershipTypeData.duration} Months All Pass</p>
+            <ul class="mt-2 list-disc list-inside">
+                <li>{membershipTypeData.extras}</li>
+            </ul>
+            <p className="text-xl mt-4 text-orange-500">{membershipTypeData.price} Dai</p>
+            <img className="w-[14rem] border border-gray-400 mt-8" src={`/membershipNFTs/${membershipTypeData.duration}months.png`} alt=""></img>
             <p className="mt-4">You will be minted this nft upon buying</p>
-            <button className="mt-2 px-2 py-1 bg-white text-orange-500 rounded border border-gray-400" onClick={handleBuyNow}>BUY NOW</button>
+            <button className="mt-4 px-2 py-1 bg-white text-orange-500 hover:text-orange-700 rounded border border-orange-400 hover:border-orange-700" onClick={handleBuyNow}>BUY NOW</button>
         </Layout>
     )
 }
