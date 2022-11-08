@@ -45,13 +45,14 @@ export default function AttendClass() {
     }
 
     return (
-        <div>
+        <div className='p-6'>
             {!connectedAccount ? (
                 <button className="px-4 py-2 text-lg border border-orange-600 text-orange-600" onClick={walletConnectLink}>WalletConnect</button>
             ) : (
                 <div>
-                    <button className="px-4 py-2 text-lg border border-orange-600 text-orange-600" onClick={disconnectWalletLink}>WalletConnect Disconnect</button>
-                    <button className="px-4 py-2 text-lg border border-orange-600 text-orange-600" onClick={() => { handleCheckNFT(connectedAccount) }}>Check NFT</button>
+                    <p>Wallet Connected: {connectedAccount}</p>
+                    <button className="mt-6 block px-4 py-2 text-lg border border-orange-600 text-orange-600" onClick={disconnectWalletLink}>WalletConnect Disconnect</button>
+                    <button className="mt-6 block px-4 py-2 text-lg border border-orange-600 text-orange-600" onClick={() => { handleCheckNFT(connectedAccount) }}>Check NFT</button>
                 </div>
             )}
 

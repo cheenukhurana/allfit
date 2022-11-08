@@ -32,17 +32,26 @@ export async function CreateSubscription(creator_address, img_url, payment_val) 
         signer
     );
 
-    await subscriptionContract.makePaymentToStore(payment_val, {
-        gasLimit: '100000'
+    // await subscriptionContract.makePaymentToStore(payment_val, {
+    //     gasLimit: '3000000'
+    // }).then(function (resp) {
+    //     console.log("========= payment resp: ", resp);
+    //     subscriptionContract.createSubscription(img_url,
+    //         img_url,
+    //         creator_address,
+    //         1670426482, {
+    //         gasLimit: '3000000'
+    //     }).then(function (resp) {
+    //         console.log("========= created subscription: ", resp);
+    //     });
+    // });
+
+    subscriptionContract.createSubscription(img_url,
+        img_url,
+        creator_address,
+        1670426482, {
+        gasLimit: '3000000'
     }).then(function (resp) {
-        console.log("========= payment resp: ", resp);
-        subscriptionContract.createSubscription(img_url,
-            img_url,
-            creator_address,
-            1670426482, {
-            gasLimit: '100000'
-        }).then(function (resp) {
-            console.log("========= created subscription: ", resp);
-        });
+        console.log("========= created subscription: ", resp);
     });
 }

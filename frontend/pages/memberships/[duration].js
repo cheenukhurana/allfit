@@ -23,7 +23,7 @@ export default function MembershipType({ membershipTypeData }) {
         if(address){
             // buyMembership(address, )
             // .then(() => console.log("Transaction complete")) 
-            console.log(address+" "+duration)
+            console.log(address+" "+duration+" "+ipfsURLs[duration])
             CreateSubscription(address, ipfsURLs[duration], 0)
         }
         else {

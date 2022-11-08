@@ -3,6 +3,7 @@ import { COVALENT_BASE_URL } from "./constants";
 import { COVALENT_API_KEY } from "./constants";
 import { CHAIN_ID } from "./constants";
 import { NFT_CONTRACT_ADDRESS } from "./constants"
+import { NFT_CONTRACT_ADDRESS_TEST } from "./constants"
 
 async function fetchAllTokensForAnAddress(address) {
     // https://api.covalenthq.com/v1/:chain_id/address/:address/balances_v2/?&key=
@@ -22,7 +23,7 @@ export async function addressHasNFT(address) {
     const allTokens = await fetchAllTokensForAnAddress(address)
 
     for (let i = 0; i < allTokens.length; i++) {
-        if (allTokens[i].contract_address === NFT_CONTRACT_ADDRESS) {
+        if (allTokens[i].contract_address === NFT_CONTRACT_ADDRESS_TEST) {
             hasNFT = true
             break
         }
