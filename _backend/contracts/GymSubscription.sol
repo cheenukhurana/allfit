@@ -2,6 +2,7 @@
 pragma solidity ^0.8.4;
 
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
+import "@openzeppelin/contracts/utils/Strings.sol";
 import "./GymStore.sol";
 
 contract GymSubscription is ERC721URIStorage {
@@ -11,7 +12,7 @@ contract GymSubscription is ERC721URIStorage {
     struct storeSubscription {
         uint256 tokenId;
         string ipfsHash;
-        string imgUrl;
+        string image;
         address owner;
         uint256 createdAt; // timestamp
         uint256 invalidAfter; // timestamp after which service is invalid
@@ -25,7 +26,7 @@ contract GymSubscription is ERC721URIStorage {
 
     function createSubscription(
         string memory ipfsHash,
-        string memory imgUrl,
+        string memory image,
         address ownerAddress,
         uint256 invalidAfter
     ) public {
@@ -37,7 +38,7 @@ contract GymSubscription is ERC721URIStorage {
         storeSubscription memory nextSub = storeSubscription(
             sid,
             ipfsHash,
-            imgUrl,
+            image,
             ownerAddress,
             block.timestamp,
             invalidAfter
@@ -46,7 +47,28 @@ contract GymSubscription is ERC721URIStorage {
         // _transfer(msg.sender, _gymStore, tokenId);
         subscriptions.push(nextSub);
         _mint(msg.sender, serviceId);
+        _setTokenURI(serviceId, ipfsHash);
         serviceId++;
+    }
+
+    function GetSubscriptionData(uint256 _storeId)
+        public
+        view
+        returns (
+            uint256,
+            string memory,
+            string memory,
+            address,
+            uint256
+        )
+    {
+        return (
+            subscriptions[_storeId].tokenId,
+            subscriptions[_storeId].ipfsHash,
+            subscriptions[_storeId].image,
+            subscriptions[_storeId].owner,
+            subscriptions[_storeId].invalidAfter
+        );
     }
 
     function makePaymentToStore(uint256 val) public {
